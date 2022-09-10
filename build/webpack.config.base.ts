@@ -1,11 +1,9 @@
-import { Configuration, DefinePlugin, ProgressPlugin } from 'webpack';
+import { Configuration, DefinePlugin } from 'webpack';
 import * as path from 'path';
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 import HtmlWebpackPlugin = require('html-webpack-plugin');
-import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import { VueLoaderPlugin } from 'vue-loader';
 import { pageTitle } from '../config';
-import ESLintPlugin from 'eslint-webpack-plugin';
 
 export const statsConfig = {
   colors: true,
@@ -85,15 +83,11 @@ const config: Configuration = {
       inject: 'body',
       hash: true,
     }),
-    new ForkTsCheckerWebpackPlugin(),
+
     new VueLoaderPlugin(),
     new DefinePlugin({
       __VUE_OPTIONS_API__: true,
       __VUE_PROD_DEVTOOLS__: false,
-    }),
-    new ProgressPlugin(),
-    new ESLintPlugin({
-      extensions: ['vue', 'js', 'jsx', 'cjs', 'mjs', 'ts', 'tsx', 'cts', 'mts'],
     }),
   ],
   stats: statsConfig,
