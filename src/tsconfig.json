@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    // Modules
+    "module": "esnext",
+    "moduleResolution": "node",
+
+    // Emit
+    "importHelpers": true,
+    "sourceMap": true,
+
+    // Interop Constraints
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+
+    // Language and Environment
+    "target": "es5",
+    "jsx": "preserve",
+    "useDefineForClassFields": true,
+
+    // Completeness
+    "skipLibCheck": true
+  }
+}

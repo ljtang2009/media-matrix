@@ -1,0 +1,25 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    // Modules
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "rootDir": "../",
+
+    // Interop Constraints
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+
+    // Language and Environment
+    "lib": ["es2021"],
+    "target": "es2021",
+
+    // Completeness
+    "skipLibCheck": true
+  },
+  "ts-node": {
+    "files": true,
+    "pretty": true
+  },
+  "include": ["**/*", "../config/**/*"]
+}
