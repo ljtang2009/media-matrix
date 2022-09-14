@@ -32,6 +32,7 @@ const config: Configuration = {
         exclude: /node_modules/,
         loader: 'ts-loader',
         options: {
+          transpileOnly: true,
           appendTsSuffixTo: [/\.vue$/],
         },
       },

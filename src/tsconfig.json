@@ -1,5 +1,9 @@
 {
+  "extends": "../tsconfig.base.json",
   "compilerOptions": {
+    // Type Checking
+    // "noUnusedLocals": true,
+
     // Modules
     "module": "esnext",
     "moduleResolution": "node",

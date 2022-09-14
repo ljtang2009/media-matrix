@@ -1,13 +1,11 @@
 <template>
   <div class="div1">{{ count }}</div>
-  <Com1></Com1>
 </template>
 <script setup lang="ts">
 // 启用了 TypeScript
 import { ref } from 'vue';
-import Com1 from './Com-1.vue';
 
-const count = ref('100');
+const count = ref('200');
 
 // const s = 1;
 // function func(arg: string) {
