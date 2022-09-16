@@ -5,24 +5,30 @@
     // "noUnusedLocals": true,
 
     // Modules
-    "module": "esnext",
-    "moduleResolution": "node",
+    "module": "esnext", // Target latest version of ECMAScript.
+    "moduleResolution": "node", // Search under node_modules for non-relative imports.
 
     // Emit
     "importHelpers": true,
     "sourceMap": true,
+    "noEmit": true, // Don't emit; allow Babel to transform files.
+
+    //JavaScript Support
+    "allowJs": true, // Process & infer types from .js files.
 
     // Interop Constraints
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
+    "esModuleInterop": true, // Import non-ES modules as default imports.
     "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true, // Disallow features that require cross-file information for emit.
 
     // Language and Environment
-    "target": "es5",
+    "target": "esnext",
     "jsx": "preserve",
     "useDefineForClassFields": true,
 
     // Completeness
     "skipLibCheck": true
-  }
+  },
+  "include": ["**/*"]
 }

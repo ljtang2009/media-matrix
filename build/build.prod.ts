@@ -8,10 +8,12 @@ webpack(webpackConfig, (err, stats) => {
     return;
   }
 
-  console.info(
-    stats.toString({
-      colors: true,
-      modules: false,
-    }),
-  );
+  if (stats) {
+    console.info(
+      stats.toString({
+        colors: true,
+        modules: false,
+      }),
+    );
+  }
 });

@@ -1,6 +1,7 @@
 <template>
   <div class="div1">{{ count }}</div>
   <Com1></Com1>
+  <a-button type="primary">Primary Button</a-button>
 </template>
 <script setup lang="ts">
 // 启用了 TypeScript
