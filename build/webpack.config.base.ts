@@ -86,6 +86,10 @@ const config: Configuration = {
       __VUE_PROD_DEVTOOLS__: false,
     }),
   ],
+  performance: {
+    maxAssetSize: 1024 * 300, // 单位 bytes
+    maxEntrypointSize: 1024 * 400,
+  },
 };
 
 export default config;
