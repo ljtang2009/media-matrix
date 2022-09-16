@@ -1,5 +1,5 @@
 <template>
-  <div class="div1">{{ count }}</div>
+  <div class="div2">{{ count }}</div>
 </template>
 <script setup lang="ts">
 // 启用了 TypeScript
@@ -14,8 +14,8 @@ const count = ref('200');
 // func(s);
 </script>
 <style scoped lang="less">
-@div-color: #00ff00;
-.div1 {
+@div-color: #ff0000;
+.div2 {
   color: @div-color;
   display: flex;
 }

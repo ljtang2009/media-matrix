@@ -5,11 +5,6 @@ import HtmlWebpackPlugin = require('html-webpack-plugin');
 import { VueLoaderPlugin } from 'vue-loader';
 import { pageTitle } from '../config';
 
-export const statsConfig = {
-  colors: true,
-  modules: false,
-};
-
 const config: Configuration = {
   context: path.resolve(__dirname, '../src'),
   entry: {
@@ -37,23 +32,12 @@ const config: Configuration = {
         },
       },
       {
-        test: /\.(css|less)$/,
-        exclude: /node_modules/,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1,
-            },
-          },
-          {
-            loader: 'less-loader', // compiles Less to CSS
-          },
-          {
-            loader: 'postcss-loader',
-          },
-        ],
+        test: /\.css$/,
+        use: ['vue-style-loader', 'css-loader', 'postcss-loader'],
+      },
+      {
+        test: /\.less$/,
+        use: ['vue-style-loader', 'css-loader', 'less-loader', 'postcss-loader'],
       },
     ],
   },
@@ -91,7 +75,6 @@ const config: Configuration = {
       __VUE_PROD_DEVTOOLS__: false,
     }),
   ],
-  stats: statsConfig,
 };
 
 export default config;

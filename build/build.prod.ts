@@ -1,5 +1,5 @@
 import webpackConfig from './webpack.config.prod';
-import { statsConfig } from './webpack.config.base';
+// import { statsConfig } from './webpack.config.base';
 import webpack from 'webpack';
 
 webpack(webpackConfig, (err, stats) => {
@@ -8,5 +8,10 @@ webpack(webpackConfig, (err, stats) => {
     return;
   }
 
-  console.info(stats.toString(statsConfig));
+  console.info(
+    stats.toString({
+      colors: true,
+      modules: false,
+    }),
+  );
 });
