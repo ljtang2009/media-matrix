@@ -1,19 +1,23 @@
-import webpackConfig from './webpack.config.prod';
-// import { statsConfig } from './webpack.config.base';
+import getConfig from './webpack.config.prod';
 import webpack from 'webpack';
 
-webpack(webpackConfig, (err, stats) => {
-  if (err) {
-    console.error(err);
-    return;
-  }
+async function build() {
+  const webpackConfig = await getConfig();
+  webpack(webpackConfig, (err, stats) => {
+    if (err) {
+      console.error(err);
+      return;
+    }
 
-  if (stats) {
-    console.info(
-      stats.toString({
-        colors: true,
-        modules: false,
-      }),
-    );
-  }
-});
+    if (stats) {
+      console.info(
+        stats.toString({
+          colors: true,
+          modules: false,
+        }),
+      );
+    }
+  });
+}
+
+build();

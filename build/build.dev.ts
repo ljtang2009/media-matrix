@@ -2,6 +2,7 @@ import getPort from 'get-port';
 import config from './webpack.config.dev';
 import { webpack } from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
+import { devServerPort } from '../config';
 
 const compiler = webpack(config);
 
@@ -13,7 +14,9 @@ const runServer = async () => {
     },
     hot: true, // 启用 webpack 的 热模块替换 特性
     open: true,
-    port: await getPort(),
+    port: await getPort({
+      port: devServerPort,
+    }),
     // proxy: {
     //   '/api': 'http://localhost:3000',
     // },
