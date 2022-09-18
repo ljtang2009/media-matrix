@@ -1,9 +1,11 @@
 import { createApp } from 'vue';
 import App from './App.vue';
+import '@/style/common.less';
 
 const app = createApp(App);
 
-import { Button } from 'ant-design-vue';
+import { Button, Layout } from 'ant-design-vue';
+app.use(Layout);
 app.use(Button);
 
 app.mount('#app');

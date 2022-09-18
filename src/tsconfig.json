@@ -7,6 +7,10 @@
     // Modules
     "module": "esnext", // Target latest version of ECMAScript.
     "moduleResolution": "node", // Search under node_modules for non-relative imports.
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["../src/*"]
+    },
 
     // Emit
     "importHelpers": true,

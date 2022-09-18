@@ -54,6 +54,9 @@ const config: Configuration = {
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.vue', '.json'],
+    alias: {
+      '@': path.resolve(__dirname, '../src'),
+    },
   },
   optimization: {
     moduleIds: 'deterministic',
