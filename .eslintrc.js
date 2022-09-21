@@ -32,7 +32,7 @@ module.exports = {
     // Suggestions
     // 这些规则建议了不同的做事方式:
     'no-alert': [IS_PROD ? 'error' : 'off'], // 禁止使用 alert, confirm, 和 prompt
-    'no-console': [IS_PROD ? 'error' : 'off'],
+    'no-console': 'off',
 
     /* #endregion */
 
