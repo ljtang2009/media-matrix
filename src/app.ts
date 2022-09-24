@@ -2,9 +2,6 @@ import { createApp } from 'vue';
 import App from '@/App.vue';
 import { createPinia } from 'pinia';
 import '@/style/global.less';
-import { ThemeType, changeTheme } from '@/common/theme';
-
-changeTheme(ThemeType.light);
 
 const pinia = createPinia();
 const app = createApp(App);

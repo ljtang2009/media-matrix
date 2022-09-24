@@ -14,6 +14,7 @@ async function build() {
         stats.toString({
           colors: true,
           modules: false,
+          entrypoints: false,
         }),
       );
     }

@@ -21,13 +21,15 @@ module.exports = {
     es2021: true,
   },
   overrides: [],
-  globals: {},
+  globals: {
+    __CURRENT_THEME_TAG_ID__: "readonly"
+  },
   rules: {
     /* #region ESLint rules */
 
     // Possible Errors
     // 这些规则与 JavaScript 代码中可能的错误或逻辑错误有关：
-    'no-debugger': [IS_PROD ? 'error' : 'off'],
+    'no-debugger': 'off',
     'no-duplicate-imports': 'error', // 禁止重复导入模块
 
     // Suggestions

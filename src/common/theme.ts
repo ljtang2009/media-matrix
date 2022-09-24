@@ -1,3 +1,4 @@
+
 export enum ThemeType {
   'light' = 'light',
   'light-compact' = 'light-compact',
@@ -6,7 +7,7 @@ export enum ThemeType {
 }
 
 export function changeTheme(themeType: ThemeType) {
-  const themeLinkTagId = 'theme';
+  const themeLinkTagId = __CURRENT_THEME_TAG_ID__;
   const currentThemeTag = document.getElementById(themeLinkTagId);
   let themeStr = '';
   const themeTags = document.getElementsByTagName('theme');

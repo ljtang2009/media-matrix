@@ -3,7 +3,7 @@ import * as path from 'path';
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 import HtmlWebpackPlugin = require('html-webpack-plugin');
 import { VueLoaderPlugin } from 'vue-loader';
-import { pageTitle } from '../config';
+import { pageTitle, defaultTheme, currentThemeTagId } from '../config';
 import * as dotenv from 'dotenv';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
@@ -72,6 +72,13 @@ function getConfiguration(options?: ConfigurationOptions): Configuration {
             },
           ],
         },
+        {
+          test: /\.ejs$/,
+          loader: 'ejs-loader',
+          options: {
+            esModule: false,
+          },
+        },
       ],
     },
     resolve: {
@@ -95,9 +102,11 @@ function getConfiguration(options?: ConfigurationOptions): Configuration {
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: path.resolve(__dirname, '../src/index.html'),
+        template: path.resolve(__dirname, '../src/index.ejs'),
         templateParameters: {
           title: pageTitle,
+          defaultTheme,
+          currentThemeTagId
         },
         inject: false,
         hash: true,
@@ -107,6 +116,7 @@ function getConfiguration(options?: ConfigurationOptions): Configuration {
         __VUE_OPTIONS_API__: JSON.stringify(true),
         __VUE_PROD_DEVTOOLS__: JSON.stringify(false),
         'process.env.NODE_ENV': JSON.stringify(process.env['NODE_ENV']),
+        __CURRENT_THEME_TAG_ID__: JSON.stringify(currentThemeTagId)
       }),
       new MiniCssExtractPlugin({
         filename: 'style/[name].[contenthash].css',

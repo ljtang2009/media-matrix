@@ -2,8 +2,8 @@ const IS_PROD = process.env.NODE_ENV === 'production';
 
 const plugins = [];
 if (IS_PROD) {
-  // 去除日志的插件
   plugins.push('transform-remove-console');
+  plugins.push('transform-remove-debugger');
 }
 
 // 只有 使用默认主题 且 不切断换到其他主题 的时候才可以用这个方法按需加载。
