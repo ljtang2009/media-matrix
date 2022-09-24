@@ -1,25 +1,19 @@
 import { createApp } from 'vue';
-import App from './App.vue';
-import '@/style/common.less';
+import App from '@/App.vue';
+import { createPinia } from 'pinia';
+import '@/style/global.less';
+import { ThemeType, changeTheme } from '@/common/theme';
 
+changeTheme(ThemeType.light);
+
+const pinia = createPinia();
 const app = createApp(App);
+app.use(pinia);
 
-import { Button, Layout } from 'ant-design-vue';
+import { Layout, Menu, Button } from 'ant-design-vue';
+
 app.use(Layout);
+app.use(Menu);
 app.use(Button);
 
 app.mount('#app');
-
-// const s = 1;
-// function func(arg: string) {
-//   // console.log(arg);
-//   throw arg;
-// }
-// func(s);
-
-async function func() {
-  const { default: module1 } = await import('./module1');
-  console.log(module1.key1);
-}
-
-func();

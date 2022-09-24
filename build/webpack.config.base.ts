@@ -5,6 +5,8 @@ import HtmlWebpackPlugin = require('html-webpack-plugin');
 import { VueLoaderPlugin } from 'vue-loader';
 import { pageTitle } from '../config';
 import * as dotenv from 'dotenv';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+
 interface ConfigurationOptions {
   /**
    * dotenv path
@@ -23,10 +25,14 @@ function getConfiguration(options?: ConfigurationOptions): Configuration {
     context: path.resolve(__dirname, '../src'),
     entry: {
       app: path.resolve(__dirname, '../src/app.ts'),
+      'light-theme': path.resolve(__dirname, '../src/style/theme/light.less'),
+      'light-compact-theme': path.resolve(__dirname, '../src/style/theme/light-compact.less'),
+      'dark-theme': path.resolve(__dirname, '../src/style/theme/dark.less'),
+      'dark-compact-theme': path.resolve(__dirname, '../src/style/theme/dark-compact.less'),
     },
     output: {
       clean: true,
-      filename: 'js/[name].[contenthash].js',
+      filename: 'script/[name].[contenthash].js',
       path: path.resolve(__dirname, '../dist'),
     },
     module: {
@@ -45,13 +51,15 @@ function getConfiguration(options?: ConfigurationOptions): Configuration {
           use: 'babel-loader',
         },
         {
-          test: /\.css$/,
-          use: ['vue-style-loader', 'css-loader', 'postcss-loader'],
-        },
-        {
-          test: /\.less$/,
+          test: /\.(less|css)$/,
           use: [
             'vue-style-loader',
+            {
+              loader: MiniCssExtractPlugin.loader,
+              options: {
+                esModule: false,
+              },
+            },
             'css-loader',
             'postcss-loader',
             {
@@ -73,7 +81,6 @@ function getConfiguration(options?: ConfigurationOptions): Configuration {
       },
     },
     optimization: {
-      moduleIds: 'deterministic',
       runtimeChunk: 'single',
       // splitChunks 用来拆分代码
       splitChunks: {
@@ -88,25 +95,27 @@ function getConfiguration(options?: ConfigurationOptions): Configuration {
     },
     plugins: [
       new HtmlWebpackPlugin({
-        // title: '媒体矩阵',
         template: path.resolve(__dirname, '../src/index.html'),
         templateParameters: {
           title: pageTitle,
         },
-        inject: 'body',
+        inject: false,
         hash: true,
       }),
-
       new VueLoaderPlugin(),
       new DefinePlugin({
         __VUE_OPTIONS_API__: JSON.stringify(true),
         __VUE_PROD_DEVTOOLS__: JSON.stringify(false),
         'process.env.NODE_ENV': JSON.stringify(process.env['NODE_ENV']),
       }),
+      new MiniCssExtractPlugin({
+        filename: 'style/[name].[contenthash].css',
+        runtime: false,
+      }),
     ],
     performance: {
-      maxAssetSize: 1024 * 300, // 单位 bytes
-      maxEntrypointSize: 1024 * 400,
+      maxAssetSize: 1024 * 800, // 单位 bytes
+      maxEntrypointSize: 1024 * 1024,
     },
   };
 }

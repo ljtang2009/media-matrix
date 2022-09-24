@@ -7,6 +7,7 @@ import { analyzerPort } from '../config';
 import getPort from 'get-port';
 import StylelintPlugin from 'stylelint-webpack-plugin';
 import * as path from 'path';
+import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 
 const webpackBaseConfig = getBaseConfiguration({ envPath: path.resolve(__dirname, '../.env') });
 
@@ -26,6 +27,13 @@ async function getConfig() {
         extensions: ['css', 'less', 'scss', 'sass'],
       }),
     ],
+    optimization: {
+      minimizer: [
+        // For webpack@5 you can use the `...` syntax to extend existing minimizers (i.e. `terser-webpack-plugin`), uncomment the next line
+        `...`,
+        new CssMinimizerPlugin(),
+      ],
+    },
   });
 }
 

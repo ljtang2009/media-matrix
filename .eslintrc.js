@@ -28,6 +28,7 @@ module.exports = {
     // Possible Errors
     // 这些规则与 JavaScript 代码中可能的错误或逻辑错误有关：
     'no-debugger': [IS_PROD ? 'error' : 'off'],
+    'no-duplicate-imports': 'error', // 禁止重复导入模块
 
     // Suggestions
     // 这些规则建议了不同的做事方式:
