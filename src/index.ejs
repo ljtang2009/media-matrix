@@ -14,7 +14,7 @@
     <% if (cssFiles[css].indexOf('-theme.') === -1) { %>
       <link href="<%= cssFiles[css] %>" rel="stylesheet" />
     <% } else { %>
-      <theme src="<%= cssFiles[css] %>" />
+      <meta name="themeMeta" content="<%= cssFiles[css] %>">
       <% if (cssFiles[css].indexOf(defaultTheme + '-theme.') >= 0 ) { %>
         <link id="<%= currentThemeTagId %>" href="<%= cssFiles[css] %>" rel="stylesheet" />
       <% } %>

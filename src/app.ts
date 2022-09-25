@@ -7,10 +7,12 @@ const pinia = createPinia();
 const app = createApp(App);
 app.use(pinia);
 
-import { Layout, Menu, Button } from 'ant-design-vue';
+import { Layout, Menu, Button, Drawer, ConfigProvider} from 'ant-design-vue';
 
 app.use(Layout);
 app.use(Menu);
 app.use(Button);
+app.use(Drawer);
+app.use(ConfigProvider);
 
 app.mount('#app');

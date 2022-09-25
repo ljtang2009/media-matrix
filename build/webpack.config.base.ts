@@ -106,7 +106,7 @@ function getConfiguration(options?: ConfigurationOptions): Configuration {
         templateParameters: {
           title: pageTitle,
           defaultTheme,
-          currentThemeTagId
+          currentThemeTagId,
         },
         inject: false,
         hash: true,
@@ -116,7 +116,7 @@ function getConfiguration(options?: ConfigurationOptions): Configuration {
         __VUE_OPTIONS_API__: JSON.stringify(true),
         __VUE_PROD_DEVTOOLS__: JSON.stringify(false),
         'process.env.NODE_ENV': JSON.stringify(process.env['NODE_ENV']),
-        __CURRENT_THEME_TAG_ID__: JSON.stringify(currentThemeTagId)
+        __CURRENT_THEME_TAG_ID__: JSON.stringify(currentThemeTagId),
       }),
       new MiniCssExtractPlugin({
         filename: 'style/[name].[contenthash].css',

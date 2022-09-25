@@ -10,9 +10,9 @@ export function changeTheme(themeType: ThemeType) {
   const themeLinkTagId = __CURRENT_THEME_TAG_ID__;
   const currentThemeTag = document.getElementById(themeLinkTagId);
   let themeStr = '';
-  const themeTags = document.getElementsByTagName('theme');
+  const themeTags = document.querySelectorAll("[name=themeMeta]");
   for (const themeTag of themeTags) {
-    const src = themeTag.getAttribute('src');
+    const src = themeTag.getAttribute('content');
     if (src && src.indexOf(`${themeType.toString()}-theme`) >= 0) {
       themeStr = src;
       break;
